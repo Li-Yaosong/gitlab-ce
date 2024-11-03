@@ -20,4 +20,4 @@ jobs:
       run: echo "${{ secrets.DOCKER_HUB_PASS }}" | docker login -u "liyaosong1@qq.com" --password-stdin
     - name: Build and push
       run: |
-        docker buildx build --sbom=true --provenance=true --platform linux/amd64,linux/arm64 --tag liyaosong/gitlab-ce:17.5.1 --tag liyaosong/gitlab-ce:latest --push
+        docker buildx build --sbom=true --provenance=true --platform linux/amd64,linux/arm64 --tag liyaosong/gitlab-ce:17.5.1 --tag liyaosong/gitlab-ce:latest . --push

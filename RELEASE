@@ -1,0 +1,8 @@
+RELEASE_PACKAGE=gitlab-ce
+RELEASE_VERSION=17.5.1-ce.0
+if [ `uname -m` == "aarch64" ]; then
+    ARCH=arm64
+else
+    ARCH=amd64
+fi
+DOWNLOAD_URL=https://packages.gitlab.com/gitlab/gitlab-ce/packages/ubuntu/noble/${RELEASE_PACKAGE}_${RELEASE_VERSION}_${ARCH}.deb/download.deb

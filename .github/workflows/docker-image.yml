@@ -1,0 +1,23 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v1
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1
+    - name: Login to Docker Hub
+      run: echo "${{ secrets.DOCKER_HUB_PASS }}" | docker login -u "liyaosong1@qq.com" --password-stdin
+    - name: Build and push
+      run: |
+        docker buildx build --sbom=true --provenance=true --platform linux/amd64,linux/arm64 --tag liyaosong/gitlab-ce:17.5.1 --tag liyaosong/gitlab-ce:latest--push

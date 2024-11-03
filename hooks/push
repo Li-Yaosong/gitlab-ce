@@ -1,0 +1,3 @@
+#!/bin/bash
+
+echo "Skip pushing image with tag $IMAGE_NAME"
